@@ -1,0 +1,2 @@
+# gestion-clientes
+ Sistema de Gestión de Clientes (CRM) • Descripción: Un sistema para gestionar la relación con los clientes. • Módulos: o Gestión de clientes: Registro y administración de clientes. o Seguimiento de interacciones: Registro de llamadas, reuniones y correos. o Gestión de oportunidades: Monitoreo de oportunidades de negocio. o Gestión de ventas: Control del ciclo de ventas, desde la prospección hasta el cierre. o Reportes: Análisis de ventas, clientes, y proyecciones.
