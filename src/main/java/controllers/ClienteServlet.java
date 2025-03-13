@@ -1,52 +1,39 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Cliente;
+import services.ClienteService;
+import services.impl.ClienteServiceImpl;
+
 /**
  * Servlet implementation class ClienteServlet
  */
 @WebServlet("/clientes")
 public class ClienteServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private final ClienteService clienteService;
+
     public ClienteServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        clienteService = new ClienteServiceImpl();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("METODO GET - Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("METODO POST - Served at: ").append(request.getContextPath());
-	}
-	
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.getWriter().append("METODO PUT - Served at: ").append(request.getContextPath());
-	}
-	
-	protected void doPatch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("METODO PATCH - Served at: ").append(request.getContextPath());
-	}
-	
-	
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Cliente> clientes = clienteService.listarClientes();
+        request.setAttribute("clientes", clientes);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/clientes.jsp");
+        dispatcher.forward(request, response);
+    }
 }
+
+
