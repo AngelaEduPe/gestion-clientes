@@ -5,7 +5,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dao.InteraccionMapper">
-    <resultMap id="InteraccionMap" type="models.Interacciones">
+    <resultMap id="InteraccionMap" type="models.Interaccion">
         <id column="id_interaccion" property="idInteraccion" />
         <result column="id_cliente" property="idCliente" />
         <result column="tipo" property="tipo" />
@@ -13,7 +13,7 @@
         <result column="fecha" property="fecha" />
     </resultMap>
 
-    <select id="listarInteracciones" resultMap="InteraccionMap">
+    <select id="listarInteraccion" resultMap="InteraccionMap">
         SELECT id_interaccion, id_cliente, tipo, detalle, fecha
         FROM Interacciones
     </select>
