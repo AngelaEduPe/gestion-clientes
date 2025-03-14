@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.OportunidadMapper">
+    <resultMap id="OportunidadMap" type="models.Oportunidad">
+        <id column="id_oportunidad" property="idOportunidad" />
+        <result column="id_cliente" property="idCliente" />
+        <result column="estado" property="estado" />
+        <result column="monto_estimado" property="montoEstimado" />
+        <result column="fecha_cierre" property="fechaCierre" />
+    </resultMap>
+
+    <select id="listarOportunidades" resultMap="OportunidadMap">
+        SELECT id_oportunidad, id_cliente, estado, monto_estimado, fecha_cierre
+        FROM Oportunidad
+    </select>
+</mapper>
