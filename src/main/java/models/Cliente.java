@@ -94,3 +94,4 @@ public class Cliente {
         this.fechaRegistro = fechaRegistro;
     }
 }
+
