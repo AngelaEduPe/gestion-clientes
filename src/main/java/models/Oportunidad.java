@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Oportunidad {
     private Integer idOportunidad;
-    private Cliente cliente;
+    private Cliente cliente; // Relación con Cliente
     private String estado;
     private Double montoEstimado;
     private Timestamp fechaCierre;
