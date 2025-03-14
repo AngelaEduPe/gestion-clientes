@@ -6,15 +6,30 @@
 <mapper namespace="dao.VentaMapper">
     <resultMap id="VentaMap" type="models.Venta">
         <id column="id_venta" property="idVenta" />
-        <result column="id_cliente" property="idCliente" />
-        <result column="id_oportunidad" property="idOportunidad" />
         <result column="monto" property="monto" />
         <result column="fecha" property="fecha" />
         <result column="estado" property="estado" />
+
+        <association property="cliente" javaType="models.Cliente">
+            <id column="id_cliente" property="idCliente" />
+            <result column="nombre" property="nombre" />
+            <result column="apellido" property="apellido" />
+        </association>
+
+        <association property="oportunidad" javaType="models.Oportunidad">
+            <id column="id_oportunidad" property="idOportunidad" />
+            <result column="monto_estimado" property="montoEstimado" />
+            <result column="estado" property="estadoOportunidad" />
+        </association>
     </resultMap>
 
     <select id="listarVentas" resultMap="VentaMap">
-        SELECT id_venta, id_cliente, id_oportunidad, monto, fecha, estado
-        FROM Venta
+        SELECT 
+            v.id_venta, v.id_cliente, v.id_oportunidad, v.monto, v.fecha, v.estado,
+            c.id_cliente, c.nombre, c.apellido,
+            o.id_oportunidad, o.monto_estimado, o.estado AS estadoOportunidad
+        FROM Venta v
+        JOIN Cliente c ON v.id_cliente = c.id_cliente
+        LEFT JOIN Oportunidad o ON v.id_oportunidad = o.id_oportunidad;
     </select>
 </mapper>

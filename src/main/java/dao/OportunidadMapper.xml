@@ -13,7 +13,10 @@
     </resultMap>
 
     <select id="listarOportunidades" resultMap="OportunidadMap">
-        SELECT id_oportunidad, id_cliente, estado, monto_estimado, fecha_cierre
-        FROM Oportunidad
+        SELECT 
+            o.id_oportunidad, o.id_cliente, o.estado, o.monto_estimado, o.fecha_cierre,
+            c.id_cliente, c.nombre, c.apellido
+        FROM Oportunidad o
+        JOIN Cliente c ON o.id_cliente = c.id_cliente;
     </select>
 </mapper>
