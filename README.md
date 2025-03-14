@@ -14,4 +14,5 @@ El sistema ofrece funcionalidades clave como:
 - Gestión de Ventas: Registra las ventas realizadas y las asocia con oportunidades concretas.
 
 ## Modelo de Base de Datos:
-(Adjuntar imagen del diagrama)
+![Diagrama](https://github.com/user-attachments/assets/e4252fc6-621d-40a1-a6f4-76d7989b8341)
+
