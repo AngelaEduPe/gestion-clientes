@@ -2,9 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="dao.ClienteMapper">
 
+<mapper namespace="dao.ClienteMapper">
     <resultMap id="ClienteMap" type="models.Cliente">
         <id column="id_cliente" property="idCliente" />
         <result column="nombre" property="nombre" />
@@ -21,7 +20,7 @@
     <select id="listarClientes" resultMap="ClienteMap">
         SELECT id_cliente, nombre, apellido, correo, telefono, empresa, dni, ruc, tipo_cliente, fecha_registro
         FROM Cliente
-        WHERE estado_auditoria = '1'
     </select>
+
     
-    </mapper>
+</mapper>

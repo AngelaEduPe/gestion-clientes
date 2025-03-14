@@ -30,22 +30,39 @@
  	</header>
 
     <main class="p-4">
-        <div class="flex w-full justify-center p-4 gap-4 flex-wrap">
-            <%
-                List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
-                if (clientes != null && !clientes.isEmpty()) {
-                    for (Cliente cliente : clientes) {
-            %>
-            <div class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-300 border-solid hover:border-blue-600 cursor-pointer">
-                <p class="text-center font-bold text-gray-600"><%= cliente.getNombre() %> <%= cliente.getApellido() %></p>
-                <p class="text-center text-gray-600"><%= cliente.getCorreo() %></p>
-                <p class="text-center text-gray-600"><%= cliente.getTelefono() %></p>
-                <p class="text-center text-gray-600"><%= cliente.getEmpresa() %></p>
-            </div>
-            <% } %>
-            <% } else { %>
-            <p>No se encontraron registros</p>
-            <% } %>
+        <h1 class="text-gray-700 font-bold text-2xl text-center">Lista de Clientes</h1>
+        <div class="w-full p-4">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="py-2 px-4 border-b">Nombre</th>
+                        <th class="py-2 px-4 border-b">Apellido</th>
+                        <th class="py-2 px-4 border-b">Correo</th>
+                        <th class="py-2 px-4 border-b">Teléfono</th>
+                        <th class="py-2 px-4 border-b">Empresa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
+                        if (clientes != null && !clientes.isEmpty()) {
+                            for (Cliente cliente : clientes) {
+                    %>
+                    <tr>
+                        <td class="py-2 px-4 border-b"><%= cliente.getNombre() %></td>
+                        <td class="py-2 px-4 border-b"><%= cliente.getApellido() %></td>
+                        <td class="py-2 px-4 border-b"><%= cliente.getCorreo() %></td>
+                        <td class="py-2 px-4 border-b"><%= cliente.getTelefono() %></td>
+                        <td class="py-2 px-4 border-b"><%= cliente.getEmpresa() %></td>
+                    </tr>
+                    <% } %>
+                    <% } else { %>
+                    <tr>
+                        <td colspan="5" class="py-2 px-4 text-center">No se encontraron registros</td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
         </div>
         <div>
             Total registros:
