@@ -2,6 +2,8 @@ package services.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import config.MyBatisUtil;
 import dao.OportunidadMapper;
 import models.Oportunidad;
