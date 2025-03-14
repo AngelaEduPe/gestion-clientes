@@ -2,7 +2,7 @@ package models;
 
 import java.sql.Timestamp;
 
-public class Interacciones {
+public class Interaccion {
     private Integer idInteraccion;
     private Cliente cliente; // Relación con Cliente
     private String tipo;
