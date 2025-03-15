@@ -21,7 +21,10 @@
 
 	<!-- RUTA DE OTROS ARCHIVOS XML PARA MYBATIS -->
 	<mappers>
-		<!-- Para usar el XML, se referencia con 'resource' -->
-		<mapper resource="dao/ClienteMapper.xml" />
-	</mappers>
+    <mapper resource="dao/ClienteMapper.xml"/>
+    <mapper resource="dao/InteraccionMapper.xml"/>
+    <mapper resource="dao/OportunidadMapper.xml"/>
+    <mapper resource="dao/VentaMapper.xml"/>
+</mappers>
+
 </configuration>
