@@ -7,16 +7,15 @@
     <resultMap id="OportunidadMap" type="models.Oportunidad">
         <id column="id_oportunidad" property="idOportunidad" />
         <result column="id_cliente" property="idCliente" />
+        <result column="nombre" property="nombre" />
+        <result column="descripcion" property="descripcion" />
+        <result column="valor" property="valor" />
         <result column="estado" property="estado" />
-        <result column="monto_estimado" property="montoEstimado" />
-        <result column="fecha_cierre" property="fechaCierre" />
+        <result column="fecha_creacion" property="fechaCreacion" />
     </resultMap>
 
     <select id="listarOportunidades" resultMap="OportunidadMap">
-        SELECT 
-            o.id_oportunidad, o.id_cliente, o.estado, o.monto_estimado, o.fecha_cierre,
-            c.id_cliente, c.nombre, c.apellido
-        FROM Oportunidad o
-        JOIN Cliente c ON o.id_cliente = c.id_cliente;
+        SELECT id_oportunidad, id_cliente, nombre, descripcion, valor, estado, fecha_creacion
+        FROM Oportunidad
     </select>
 </mapper>

@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -8,13 +7,13 @@
     <resultMap id="InteraccionMap" type="models.Interaccion">
         <id column="id_interaccion" property="idInteraccion" />
         <result column="id_cliente" property="idCliente" />
+        <result column="fecha" property="fecha" />
         <result column="tipo" property="tipo" />
         <result column="detalle" property="detalle" />
-        <result column="fecha" property="fecha" />
     </resultMap>
 
-    <select id="listarInteraccion" resultMap="InteraccionMap">
-        SELECT id_interaccion, id_cliente, tipo, detalle, fecha
-        FROM Interacciones
+    <select id="listarInteracciones" resultMap="InteraccionMap">
+        SELECT id_interaccion, id_cliente, fecha, tipo, detalle
+        FROM Interaccion
     </select>
 </mapper>

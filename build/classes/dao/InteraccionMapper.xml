@@ -6,20 +6,14 @@
 <mapper namespace="dao.InteraccionMapper">
     <resultMap id="InteraccionMap" type="models.Interaccion">
         <id column="id_interaccion" property="idInteraccion" />
+        <result column="id_cliente" property="idCliente" />
+        <result column="fecha" property="fecha" />
         <result column="tipo" property="tipo" />
         <result column="detalle" property="detalle" />
-        <result column="fecha" property="fecha" />
-        
-        <association property="cliente" javaType="models.Cliente">
-            <id column="id_cliente" property="idCliente" />
-            <result column="nombre" property="nombre" />
-        </association>
     </resultMap>
 
     <select id="listarInteracciones" resultMap="InteraccionMap">
-        SELECT i.id_interaccion, i.id_cliente, i.tipo, i.detalle, i.fecha,
-               c.id_cliente, c.nombre
-        FROM Interaccion i
-        JOIN Cliente c ON i.id_cliente = c.id_cliente;
+        SELECT id_interaccion, id_cliente, fecha, tipo, detalle
+        FROM Interaccion
     </select>
 </mapper>
