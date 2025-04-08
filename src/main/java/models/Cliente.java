@@ -3,17 +3,17 @@ package models;
 import java.sql.Timestamp;
 
 public class Cliente {
+
     private Integer idCliente;
     private String nombre;
     private String apellido;
-    private String correo;
+    private Timestamp fechaNacimiento;
     private String telefono;
-    private String empresa;
-    private String dni;
-    private String ruc;
-    private String tipoCliente;
+    private String email;
     private Timestamp fechaRegistro;
+    private Integer idSuscripcion;
 
+    // Getters y Setters
     public Integer getIdCliente() {
         return idCliente;
     }
@@ -38,12 +38,12 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getCorreo() {
-        return correo;
+    public Timestamp getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setFechaNacimiento(Timestamp fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getTelefono() {
@@ -54,36 +54,12 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getEmpresa() {
-        return empresa;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
-    }
-
-    public String getTipoCliente() {
-        return tipoCliente;
-    }
-
-    public void setTipoCliente(String tipoCliente) {
-        this.tipoCliente = tipoCliente;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Timestamp getFechaRegistro() {
@@ -93,5 +69,12 @@ public class Cliente {
     public void setFechaRegistro(Timestamp fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
-}
 
+    public Integer getIdSuscripcion() {
+        return idSuscripcion;
+    }
+
+    public void setIdSuscripcion(Integer idSuscripcion) {
+        this.idSuscripcion = idSuscripcion;
+    }
+}
