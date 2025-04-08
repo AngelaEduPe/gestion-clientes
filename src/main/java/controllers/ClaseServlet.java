@@ -10,28 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Cliente;
-import services.ClienteService;
-import services.impl.ClienteServiceImpl;
+import models.Clase;
+import services.ClaseService;
+import services.impl.ClaseServiceImpl;
 
 /**
- * Servlet implementation class ClienteServlet
+ * Servlet implementation class ClaseServlet
  */
-@WebServlet("/clientes")
-public class ClienteServlet extends HttpServlet {
+@WebServlet("/clases")
+public class ClaseServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private final ClienteService clienteService;
+    private final ClaseService claseService;
 
-    public ClienteServlet() {
+    public ClaseServlet() {
         super();
-        clienteService = new ClienteServiceImpl();
+        claseService = new ClaseServiceImpl();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Cliente> clientes = clienteService.listarClientes();
-        request.setAttribute("clientes", clientes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/clientes.jsp");
+        List<Clase> clases = claseService.listarClases();
+        request.setAttribute("clases", clases);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/clases.jsp");
         dispatcher.forward(request, response);
     }
 }
