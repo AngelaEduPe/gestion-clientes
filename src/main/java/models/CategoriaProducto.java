@@ -4,6 +4,7 @@ public class CategoriaProducto {
 
     private Integer idCategoria;
     private String nombreCategoria;
+    private String imagenUrl;
 
     // Getters y Setters
     public Integer getIdCategoria() {
@@ -20,5 +21,13 @@ public class CategoriaProducto {
 
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 }

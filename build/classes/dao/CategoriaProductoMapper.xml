@@ -7,11 +7,12 @@
     
     <resultMap id="CategoriaProductoMap" type="models.CategoriaProducto">
         <id column="id_categoria" property="idCategoria" />
-        <result column="nombre" property="nombre" />
+        <result column="nombre" property="nombreCategoria" />
+        <result column="imagen_url" property="imagenUrl" /> 
     </resultMap>
 
     <select id="listarCategorias" resultMap="CategoriaProductoMap">
-        SELECT id_categoria, nombre
+        SELECT id_categoria, nombre, imagen_url  
         FROM categoria_producto
     </select>
 
