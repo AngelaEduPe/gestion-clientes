@@ -1,11 +1,8 @@
 package dao;
 
-import java.util.List;
 import models.Cliente;
+import java.util.List;
 
 public interface ClienteMapper {
-	List<Cliente> listarClientes();
-
-	
-	
+    List<Cliente> listarClientes();
 }
