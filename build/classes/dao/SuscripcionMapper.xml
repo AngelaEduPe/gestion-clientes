@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.SuscripcionMapper">
+    
+    <resultMap id="SuscripcionMap" type="models.Suscripcion">
+        <id column="id_suscripcion" property="idSuscripcion" />
+        <result column="tipo" property="tipo" />
+        <result column="precio" property="precio" />
+        <result column="duracion_meses" property="duracionMeses" />
+        <result column="beneficios" property="beneficios" />
+    </resultMap>
+
+    <select id="listarSuscripciones" resultMap="SuscripcionMap">
+        SELECT id_suscripcion, tipo, precio, duracion_meses, beneficios
+        FROM suscripcion
+    </select>
+
+</mapper>

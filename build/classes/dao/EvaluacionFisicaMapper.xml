@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.EvaluacionFisicaMapper">
+    
+    <resultMap id="EvaluacionFisicaMap" type="models.EvaluacionFisica">
+        <id column="id" property="idEvaluacionFisica" />
+        <result column="id_cliente" property="idCliente" />
+        <result column="peso" property="peso" />
+        <result column="altura" property="altura" />
+        <result column="grasa_corporal" property="grasaCorporal" />
+        <result column="masa_muscular" property="masaMuscular" />
+        <result column="fecha_evaluacion" property="fechaEvaluacion" />
+    </resultMap>
+
+    <select id="listarEvaluacionesFisicas" resultMap="EvaluacionFisicaMap">
+        SELECT id, id_cliente, peso, altura, grasa_corporal, masa_muscular, fecha_evaluacion
+        FROM evaluacion_fisica
+    </select>
+
+</mapper>

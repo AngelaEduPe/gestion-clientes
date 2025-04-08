@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.CategoriaProductoMapper">
+    
+    <resultMap id="CategoriaProductoMap" type="models.CategoriaProducto">
+        <id column="id_categoria" property="idCategoria" />
+        <result column="nombre" property="nombre" />
+    </resultMap>
+
+    <select id="listarCategorias" resultMap="CategoriaProductoMap">
+        SELECT id_categoria, nombre
+        FROM categoria_producto
+    </select>
+
+</mapper>

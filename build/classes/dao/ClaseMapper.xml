@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ClaseMapper">
+    
+    <resultMap id="ClaseMap" type="models.Clase">
+        <id column="id_clase" property="idClase" />
+        <result column="nombre_clase" property="nombreClase" />
+        <result column="hora_inicio" property="horaInicio" />
+        <result column="hora_fin" property="horaFin" />
+        <result column="id_entrenador" property="idEntrenador" />
+    </resultMap>
+
+    <select id="listarClases" resultMap="ClaseMap">
+        SELECT id_clase, nombre_clase, hora_inicio, hora_fin, id_entrenador
+        FROM clase
+    </select>
+
+</mapper>

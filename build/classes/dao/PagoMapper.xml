@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.PagoMapper">
+    
+    <resultMap id="PagoMap" type="models.Pago">
+        <id column="id_pago" property="idPago" />
+        <result column="id_cliente" property="idCliente" />
+        <result column="monto" property="monto" />
+        <result column="fecha_pago" property="fechaPago" />
+    </resultMap>
+
+    <select id="listarPagos" resultMap="PagoMap">
+        SELECT id_pago, id_cliente, monto, fecha_pago
+        FROM pago
+    </select>
+
+</mapper>

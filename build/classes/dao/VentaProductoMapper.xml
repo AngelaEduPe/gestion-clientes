@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.VentaProductoMapper">
+    
+    <resultMap id="VentaProductoMap" type="models.VentaProducto">
+        <id column="id_venta_producto" property="idVentaProducto" />
+        <result column="id_cliente" property="idCliente" />
+        <result column="id_producto" property="idProducto" />
+        <result column="cantidad" property="cantidad" />
+        <result column="fecha_venta" property="fechaVenta" />
+    </resultMap>
+
+    <select id="listarVentasProductos" resultMap="VentaProductoMap">
+        SELECT id_venta_producto, id_cliente, id_producto, cantidad, fecha_venta
+        FROM venta_producto
+    </select>
+
+</mapper>

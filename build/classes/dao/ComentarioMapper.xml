@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ComentarioMapper">
+    
+    <resultMap id="ComentarioMap" type="models.Comentario">
+        <id column="id_comentario" property="idComentario" />
+        <result column="id_cliente" property="idCliente" />
+        <result column="comentario" property="comentario" />
+        <result column="fecha_comentario" property="fechaComentario" />
+    </resultMap>
+
+    <select id="listarComentarios" resultMap="ComentarioMap">
+        SELECT id_comentario, id_cliente, comentario, fecha_comentario
+        FROM comentario
+    </select>
+
+</mapper>
