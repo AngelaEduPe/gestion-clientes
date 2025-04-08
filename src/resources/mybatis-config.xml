@@ -11,9 +11,9 @@
 			<dataSource type="UNPOOLED">
 				<property name="driver" value="org.postgresql.Driver" />
 				<property name="url"
-					value="jdbc:postgresql://localhost/BDGestionClientes" />
+					value="jdbc:postgresql://localhost/ANYRA_POWERFIT" />
 				<property name="username" value="postgres" />
-				<property name="password" value="admin" />
+				<property name="password" value="Jiwon6969@" />
 			</dataSource>
 		</environment>
 	</environments>
@@ -21,7 +21,15 @@
 
 	<!-- RUTA DE OTROS ARCHIVOS XML PARA MYBATIS -->
 	<mappers>
-		<!-- Para usar el XML, se referencia con 'resource' -->
-		<mapper resource="dao/ClienteMapper.xml" />
-	</mappers>
+    <mapper resource="dao/ClienteMapper.xml"/>
+    <mapper resource="dao/ProductoMapper.xml"/>
+    <mapper resource="dao/VentaProductoMapper.xml"/>
+    <mapper resource="dao/PagoProductoMapper.xml"/>
+    <mapper resource="dao/EvaluacionFisicaMapper.xml"/>
+    <mapper resource="dao/SuscripcionMapper.xml"/>
+    <mapper resource="dao/EntrenadorMapper.xml"/>
+    <mapper resource="dao/ClaseMapper.xml"/>
+</mappers>
+
+
 </configuration>
