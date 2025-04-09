@@ -6,10 +6,9 @@ public class Entrenador {
 
     private Integer idEntrenador;
     private String nombre;
-    private String apellido;
     private String especialidad;
     private String telefono;
-    private String correo;
+    private String email;
     private Timestamp fechaContratacion;
 
     // Getters y Setters
@@ -29,14 +28,6 @@ public class Entrenador {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getEspecialidad() {
         return especialidad;
     }
@@ -53,12 +44,12 @@ public class Entrenador {
         this.telefono = telefono;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Timestamp getFechaContratacion() {
