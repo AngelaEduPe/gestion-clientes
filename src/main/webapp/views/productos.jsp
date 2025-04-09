@@ -19,7 +19,7 @@
                 <img src="https://img.icons8.com/ios7/600/FFFFFF/home.png" alt="Inicio" class="w-5 mr-2">
                 Inicio
             </a>
-            <a href="clientes.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="clientes" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/share_2.png" alt="Clientes" class="w-5 mr-2">
                 Clientes
             </a>
@@ -55,51 +55,29 @@
     </header>
 
     <!-- Contenido principal -->
-    <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE CLIENTES</h1>
-
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-4 border border-yellow-600">Nombre</th>
-                    <th class="py-2 px-4 border border-yellow-600">Apellido</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha de Nacimiento</th>
-                    <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
-                    <th class="py-2 px-4 border border-yellow-600">Email</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha de Registro</th>
-                    <th class="py-2 px-4 border border-yellow-600">ID Suscripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    // Obtener los clientes desde el request
-                    List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
-
-                    if (clientes != null && !clientes.isEmpty()) {
-                        for (Cliente cliente : clientes) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getNombre() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellido() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getFechaNacimiento() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getTelefono() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getEmail() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getFechaRegistro() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getIdSuscripcion() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="8" class="py-2 px-4 text-center text-red-400">No se encontraron clientes.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-
-        <% if (clientes != null && !clientes.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de clientes: <%= clientes.size() %></div>
+    <main class="p-4 ml-[250px]">
+    <div class="flex w-full justify-center p-4 gap-4 flex-wrap">
+        <% 
+            List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+            if (productos != null && !productos.isEmpty()) {
+                for (Producto prod : productos) {
+        %>
+            <div class="flex bg-gray-800 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-600 border-solid hover:border-yellow-600 cursor-pointer">
+                <img class="rounded-sm" src="<%= prod.getImagenUrl() %>" width="150px">
+                <span class="text-center font-bold text-yellow-400"><%= prod.getNombre() %></span>
+                <span class="text-white">S/. <%= prod.getPrecio() %></span>
+            </div>
+        <% 
+                }
+            } else {
+        %>
+            <p class="text-yellow-400">No se encontraron productos para esta categoría</p>
         <% } %>
-    </main>
+    </div>
+</main>
+
 
 </body>
 </html>
+
+>
