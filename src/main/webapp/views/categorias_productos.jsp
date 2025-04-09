@@ -15,7 +15,6 @@
             <img src="https://cdn.pixabay.com/photo/2025/04/08/05/54/05-54-53-172_1280.png" alt="Logo" class="w-50 mx-auto"> 
         </div>
         <div class="sidebar flex flex-col bg-black flex-grow">
-            <!-- Barra lateral con los enlaces -->
             <a href="index.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 border-b-2 border-yellow-400 flex items-center">
                 <img src="https://img.icons8.com/ios7/600/FFFFFF/home.png" alt="Inicio" class="w-5 mr-2">
                 Inicio
@@ -55,24 +54,27 @@
         </div>
     </header>
 
-   <main class="p-4 ml-[250px]"> <!-- Añado margen izquierdo para no cubrir el contenido -->
+   <main class="p-4 ml-[250px]"> 
     <div class="flex w-full justify-center p-4 gap-4 flex-wrap">
-        <% if (categoriaProductos != null && !categoriaProductos.isEmpty()) { %>
-            <% for(CategoriaProducto categoria: categoriaProductos) { %>
-                <a href="/galactus-store/subcategorias?idCategoria=<%= categoria.getIdCategoria() %>" class="flex bg-gray-800 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-600 border-solid hover:border-yellow-600 cursor-pointer">
+        <% if (categoriasProductos != null && !categoriasProductos.isEmpty()) { %>
+            <% for(CategoriaProducto categoria: categoriasProductos) { %>
+                <a href="/gestion-clientes/CategoriaProducto?idCategoria=<%= categoria.getIdCategoria() %>" class="flex bg-gray-800 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-600 border-solid hover:border-yellow-600 cursor-pointer">
                     <img class="rounded-sm" src="<%= categoria.getImagenUrl() %>" width="150px">
                     <span class="text-center font-bold text-yellow-400"><%= categoria.getNombreCategoria() %></span>
                 </a>
-            <% } %>
+            <% } %>http://localhost:8080/gestion-clientes/#
         <% } else { %>
             <p class="text-yellow-400">No se encontraron registros</p>
         <% } %>
     </div>
 
-    <% if (categoriaProducto != null && !categoriasProductos.isEmpty()) { %>
-        <div class="w-full p-4 text-yellow-400">Total registros: <%= categoriaProductos.size() %></div>
+    <% if (categoriasProductos != null && !categoriasProductos.isEmpty()) { %>
+        <div class="w-full p-4 text-yellow-400">Total registros: <%= categoriasProductos.size() %></div>
     <% } %>
 </main>
+
+
+
 
 </body>
 </html>

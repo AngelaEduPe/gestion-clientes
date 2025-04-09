@@ -72,8 +72,10 @@
                 </tr>
             </thead>
             <tbody>
-                <%
+                <% 
+                    // Obtener los clientes desde el request
                     List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
+
                     if (clientes != null && !clientes.isEmpty()) {
                         for (Cliente cliente : clientes) {
                 %>
