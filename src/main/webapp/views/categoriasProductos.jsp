@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
-<%@ page import="models.CategoriaProducto"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="models.CategoriaProducto" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,60 +19,66 @@
                 <img src="https://img.icons8.com/ios7/600/FFFFFF/home.png" alt="Inicio" class="w-5 mr-2">
                 Inicio
             </a>
-            <a href="clientes" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="clientes.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/share_2.png" alt="Clientes" class="w-5 mr-2">
                 Clientes
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="entrenadores.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/dumbbell.png" alt="Entrenadores" class="w-5 mr-2">
                 Entrenadores
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="suscripciones.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/contract-job.png" alt="Suscripciones" class="w-5 mr-2">
                 Suscripciones
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="clases.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/bench-press-with-dumbbells.png" alt="Clases" class="w-5 mr-2">
                 Clases
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="evaluacionesFisicas.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/win10/200w/FFFFFF/view.png" alt="Evaluaciones Físicas" class="w-5 mr-2">
                 Evaluaciones Físicas
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="pagos.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://previews.123rf.com/images/sabuhinovruzov/sabuhinovruzov1705/sabuhinovruzov170501651/78710089-icono-de-vector-de-d%C3%B3lar-dinero-ilustraci%C3%B3n-de-efectivo-blanco-y-negro-esquema-de-icono-de-banca.jpg" alt="Pagos" class="w-5 mr-2">
                 Pagos
             </a>
-            <a href="categoria_productos.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="categoriasProductos.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/product.png" alt="Venta de Productos" class="w-5 mr-2">
                 Venta de Productos
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="comentarios.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/communication.png" alt="Comentarios" class="w-5 mr-2">
                 Comentarios
             </a>
         </div>
     </header>
 
-   <main class="p-4 ml-[250px]"> 
-    <div class="flex w-full justify-center p-4 gap-4 flex-wrap">
-        <% if (categoriasProductos != null && !categoriasProductos.isEmpty()) { %>
-            <% for(CategoriaProducto categoria: categoriasProductos) { %>
-                <a href="/gestion-clientes/CategoriaProducto?idCategoria=<%= categoria.getIdCategoria() %>" class="flex bg-gray-800 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-600 border-solid hover:border-yellow-600 cursor-pointer">
-                    <img class="rounded-sm" src="<%= categoria.getImagenUrl() %>" width="150px">
-                    <span class="text-center font-bold text-yellow-400"><%= categoria.getNombreCategoria() %></span>
-                </a>
-            <% } %>http://localhost:8080/gestion-clientes/#
-        <% } else { %>
-            <p class="text-yellow-400">No se encontraron registros</p>
-        <% } %>
-    </div>
-
-    <% if (categoriasProductos != null && !categoriasProductos.isEmpty()) { %>
-        <div class="w-full p-4 text-yellow-400">Total registros: <%= categoriasProductos.size() %></div>
-    <% } %>
-</main>
-
+			<main class="p-4">
+				<div class="flex w-full justify-center p-4 gap-4 flex-wrap">
+					<% 
+						List<CategoriaProducto> categorias = 
+							(List<CategoriaProducto>) request.getAttribute("categoriasProductos");
+			
+						if (categorias != null && !categorias.isEmpty()) { 
+							for(CategoriaProducto categoria: categorias) { 
+					%>
+						<a href="/galactus-store/subcategorias?idCategoria=<%= categoria.getIdCategoria() %>" class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
+							<img class="rounded-sm" src="<%= categoria.getImagenUrl() %>" width="150px">
+							<span class="text-center font-bold text-gray-600"><%= categoria.getNombreCategoria() %></span>
+						</a>
+					<% 
+							} 
+						} else { 
+					%>
+						<p>No se encontraron registros</p>
+					<% } %>
+				</div>
+				
+				<% if (categorias != null && !categorias.isEmpty()) { %>
+					<div class="w-full p-4">Total registros: <%= categorias.size() %></div>
+				<% } %>
+			</main>
 
 
 

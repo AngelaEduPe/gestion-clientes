@@ -31,7 +31,7 @@ public class EvaluacionFisicaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<EvaluacionFisica> evaluacionesFisicas = evaluacionFisicaService.listarEvaluacionesFisicas();
         request.setAttribute("evaluacionesFisicas", evaluacionesFisicas);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/evaluaciones_fisicas.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/evaluacionesFisicas.jsp");
         dispatcher.forward(request, response);
     }
 }

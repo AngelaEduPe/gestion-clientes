@@ -1,14 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page import="java.util.List"%>
+<%@ page import="models.EvaluacionFisica"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>ANYRA POWERFIT</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>ANYRA POWERFIT - Evaluaciones Fisicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-	<header class="flex flex-col bg-black w-[250px] h-screen p-4 fixed top-0 left-0">
+
+    <header class="flex flex-col bg-black w-[250px] h-screen p-4 fixed top-0 left-0">
         <div class="logo-container p-2 mb-2">
             <img src="https://cdn.pixabay.com/photo/2025/04/08/05/54/05-54-53-172_1280.png" alt="Logo" class="w-50 mx-auto"> 
         </div>
@@ -52,14 +54,50 @@
         </div>
     </header>
 
-	<main class="p-4 ml-[250px] mt-8">
-	    <h1 class="text-gray-700 font-bold text-5xl text-center mb-4" style="font-family: 'Bebas Neue', sans-serif; color: #E1A700;">¡Bienvenidos a Anyra PowerFit!</h1>
-	    <p class="text-gray-700 text-center mb-3">Anyra PowerFit es una plataforma para gestionar de manera eficiente las actividades, suscripciones y pagos de los miembros de un gimnasio. Disfruta de una experiencia personalizada y optimiza tu progreso físico.</p>
-		<p class="text-gray-400 text-center mb-3">Utiliza el menú de navegación para acceder a las diferentes funcionalidades del sistema.</p>
+    <!-- Contenido principal -->
+    <main class="ml-[260px] p-4">
+        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE EVALUACIONEES FISICAS</h1>
 
-	    <img src="https://images.unsplash.com/photo-1623874514711-0f321325f318?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-	         alt="Gimnasio"
-	         class="w-full max-w-[900px] mx-auto rounded-2xl shadow-lg mt-8" />
-	</main>
+        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+            <thead class="bg-yellow-500">
+                <tr>
+                    <th class="py-2 px-4 border border-yellow-600">ID Cliente</th>
+                    <th class="py-2 px-4 border border-yellow-600">Peso</th>
+                    <th class="py-2 px-4 border border-yellow-600">Altura</th>
+                    <th class="py-2 px-4 border border-yellow-600">Grasa Corporal</th>
+                    <th class="py-2 px-4 border border-yellow-600">Masa Muscular</th>
+                    <th class="py-2 px-4 border border-yellow-600">Fecha Evaluación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% 
+                    // Obtener las evaluaciones desde el request
+                    List<EvaluacionFisica> evaluaciones = (List<EvaluacionFisica>) request.getAttribute("evaluaciones");
+
+                    if (evaluaciones != null && !evaluaciones.isEmpty()) {
+                        for (EvaluacionFisica evaluacion : evaluaciones) {
+                %>
+                <tr class="hover:bg-gray-700">
+                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getIdCliente() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getPeso() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getAltura() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getGrasaCorporal() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getMasaMuscular() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getFechaEvaluacion() %></td>
+                </tr>
+                <% } %>
+                <% } else { %>
+                <tr>
+                    <td colspan="7" class="py-2 px-4 text-center text-red-400">No se encontraron evaluaciones.</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <% if (evaluaciones != null && !evaluaciones.isEmpty()) { %>
+            <div class="w-full p-4 text-white">Total de evaluaciones: <%= evaluaciones.size() %></div>
+        <% } %>
+    </main>
+
 </body>
 </html>

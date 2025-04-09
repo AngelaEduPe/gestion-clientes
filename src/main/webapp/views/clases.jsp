@@ -22,37 +22,36 @@
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/share_2.png" alt="Clientes" class="w-5 mr-2">
                 Clientes
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="entrenadores.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/dumbbell.png" alt="Entrenadores" class="w-5 mr-2">
                 Entrenadores
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="suscripciones.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/contract-job.png" alt="Suscripciones" class="w-5 mr-2">
                 Suscripciones
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="clases.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/bench-press-with-dumbbells.png" alt="Clases" class="w-5 mr-2">
                 Clases
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="evaluacionesFisicas.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/win10/200w/FFFFFF/view.png" alt="Evaluaciones Físicas" class="w-5 mr-2">
                 Evaluaciones Físicas
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="pagos.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://previews.123rf.com/images/sabuhinovruzov/sabuhinovruzov1705/sabuhinovruzov170501651/78710089-icono-de-vector-de-d%C3%B3lar-dinero-ilustraci%C3%B3n-de-efectivo-blanco-y-negro-esquema-de-icono-de-banca.jpg" alt="Pagos" class="w-5 mr-2">
                 Pagos
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="categoriasProductos.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/product.png" alt="Venta de Productos" class="w-5 mr-2">
                 Venta de Productos
             </a>
-            <a href="#" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
+            <a href="comentarios.jsp" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center">
                 <img src="https://img.icons8.com/ios7/600w/FFFFFF/communication.png" alt="Comentarios" class="w-5 mr-2">
                 Comentarios
             </a>
         </div>
     </header>
-
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
         <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE CLASES</h1>
