@@ -4,5 +4,5 @@ import java.util.List;
 import models.CategoriaProducto;
 
 public interface CategoriaProductoService {
-    List<CategoriaProducto> listarCategoriasProducto();
+    List<CategoriaProducto> listarCategoriasProductos();
 }

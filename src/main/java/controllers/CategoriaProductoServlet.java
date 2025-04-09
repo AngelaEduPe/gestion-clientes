@@ -29,8 +29,7 @@ public class CategoriaProductoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Llamada al método correctamente
-        List<CategoriaProducto> categoriasProductos = categoriaProductoService.listarCategoriasProducto(); 
+        List<CategoriaProducto> categoriasProductos = categoriaProductoService.listarCategoriasProductos(); 
         request.setAttribute("categoriasProductos", categoriasProductos);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/categorias_productos.jsp");
         dispatcher.forward(request, response);
