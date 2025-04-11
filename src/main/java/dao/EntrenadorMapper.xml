@@ -11,6 +11,7 @@
         <result column="telefono" property="telefono" />
         <result column="email" property="email" />
         <result column="especialidad" property="especialidad" />
+        <result column="fecha_contratacion" property="fechaContratacion" />
     </resultMap>
 
     <select id="listarEntrenadores" resultMap="EntrenadorMap">

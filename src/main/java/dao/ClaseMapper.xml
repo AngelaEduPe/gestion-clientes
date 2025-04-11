@@ -11,10 +11,11 @@
         <result column="hora_inicio" property="horaInicio" />
         <result column="hora_fin" property="horaFin" />
         <result column="id_entrenador" property="idEntrenador" />
+        <result column="capacidad" property="capacidad" />
     </resultMap>
 
     <select id="listarClases" resultMap="ClaseMap">
-        SELECT id_clase, nombre, fecha, hora, id_entrenador
+        SELECT id_clase, nombre, fecha, hora, id_entrenador, capacidad
         FROM clase
     </select>
 
