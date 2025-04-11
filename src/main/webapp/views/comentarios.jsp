@@ -56,42 +56,44 @@
 
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE COMENTARIOS</h1>
+    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE COMENTARIOS</h1>
 
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-4 border border-yellow-600">ID Cliente</th>
-                    <th class="py-2 px-4 border border-yellow-600">Comentario</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    // Obtener los comentarios desde el request
-                    List<Comentario> comentarios = (List<Comentario>) request.getAttribute("comentarios");
+    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+        <thead class="bg-yellow-500">
+            <tr>
+                <th class="py-2 px-4 border border-yellow-600">ID Cliente</th>
+                <th class="py-2 px-4 border border-yellow-600">Comentario</th>
+                <th class="py-2 px-4 border border-yellow-600">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+                List<Comentario> comentarios = (List<Comentario>) request.getAttribute("comentarios");
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-                    if (comentarios != null && !comentarios.isEmpty()) {
-                        for (Comentario comentario : comentarios) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= comentario.getIdCliente() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= comentario.getComentario() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= comentario.getFecha() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="4" class="py-2 px-4 text-center text-red-400">No se encontraron comentarios.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                if (comentarios != null && !comentarios.isEmpty()) {
+                    for (Comentario comentario : comentarios) {
+                        String fechaFormateada = comentario.getFecha() != null ? sdf.format(comentario.getFecha()) : "";
+            %>
+            <tr class="hover:bg-gray-700">
+                <td class="py-2 px-4 border border-yellow-600"><%= comentario.getIdCliente() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= comentario.getComentario() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= fechaFormateada %></td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+                <td colspan="4" class="py-2 px-4 text-center text-red-400">No se encontraron comentarios.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-        <% if (comentarios != null && !comentarios.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de comentarios: <%= comentarios.size() %></div>
-        <% } %>
-    </main>
+    <% if (comentarios != null && !comentarios.isEmpty()) { %>
+        <div class="w-full p-4 text-white">Total de comentarios: <%= comentarios.size() %></div>
+    <% } %>
+</main>
+
 
 </body>
 </html>

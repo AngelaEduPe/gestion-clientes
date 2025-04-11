@@ -56,52 +56,57 @@
 
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE CLIENTES</h1>
+    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE CLIENTES</h1>
 
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-4 border border-yellow-600">Nombres</th>
-                    <th class="py-2 px-4 border border-yellow-600">Apellido Materno</th>
-                    <th class="py-2 px-4 border border-yellow-600">Apellido Paterno</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha de Nacimiento</th>
-                    <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
-                    <th class="py-2 px-4 border border-yellow-600">Email</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha de Registro</th>
-                    <th class="py-2 px-4 border border-yellow-600">ID Suscripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    // Obtener los clientes desde el request
-                    List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
+    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+        <thead class="bg-yellow-500">
+            <tr>
+                <th class="py-2 px-4 border border-yellow-600">Nombres</th>
+                <th class="py-2 px-4 border border-yellow-600">Apellido Materno</th>
+                <th class="py-2 px-4 border border-yellow-600">Apellido Paterno</th>
+                <th class="py-2 px-4 border border-yellow-600">Fecha de Nacimiento</th>
+                <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
+                <th class="py-2 px-4 border border-yellow-600">Email</th>
+                <th class="py-2 px-4 border border-yellow-600">Fecha de Registro</th>
+                <th class="py-2 px-4 border border-yellow-600">ID Suscripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+                List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-                    if (clientes != null && !clientes.isEmpty()) {
-                        for (Cliente cliente : clientes) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getNombres() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoPaterno() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoMaterno() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getFechaNacimiento() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getTelefono() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getEmail() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getFechaRegistro() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getIdSuscripcion() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="8" class="py-2 px-4 text-center text-red-400">No se encontraron clientes.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                if (clientes != null && !clientes.isEmpty()) {
+                    for (Cliente cliente : clientes) {
+                        String fechaNacFormateada = cliente.getFechaNacimiento() != null ? sdf.format(cliente.getFechaNacimiento()) : "";
+                        String fechaRegFormateada = cliente.getFechaRegistro() != null ? sdf.format(cliente.getFechaRegistro()) : "";
+            %>
+            <tr class="hover:bg-gray-700">
+                <td class="py-2 px-4 border border-yellow-600"><%= cliente.getNombres() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoPaterno() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoMaterno() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= fechaNacFormateada %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= cliente.getTelefono() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= cliente.getEmail() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= fechaRegFormateada %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= cliente.getIdSuscripcion() %></td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+                <td colspan="8" class="py-2 px-4 text-center text-red-400">No se encontraron clientes.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-        <% if (clientes != null && !clientes.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de clientes: <%= clientes.size() %></div>
-        <% } %>
-    </main>
+    <% if (clientes != null && !clientes.isEmpty()) { %>
+        <div class="w-full p-4 text-white">Total de clientes: <%= clientes.size() %></div>
+    <% } %>
+</main>
+
+
+
 
 </body>
 </html>

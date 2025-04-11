@@ -56,44 +56,46 @@
 
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE PAGOS</h1>
+    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE PAGOS</h1>
 
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-3 border border-yellow-600">ID Cliente</th>
-                    <th class="py-2 px-4 border border-yellow-600">Monto</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha Pago</th>
-                    <th class="py-2 px-4 border border-yellow-600">Método de Pago</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    // Obtener los pagos desde el request
-                    List<Pago> pagos = (List<Pago>) request.getAttribute("pagos");
+    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+        <thead class="bg-yellow-500">
+            <tr>
+                <th class="py-2 px-3 border border-yellow-600">ID Cliente</th>
+                <th class="py-2 px-4 border border-yellow-600">Monto</th>
+                <th class="py-2 px-4 border border-yellow-600">Fecha Pago</th>
+                <th class="py-2 px-4 border border-yellow-600">Método de Pago</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+                List<Pago> pagos = (List<Pago>) request.getAttribute("pagos");
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-                    if (pagos != null && !pagos.isEmpty()) {
-                        for (Pago pago : pagos) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= pago.getIdCliente() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= pago.getMonto() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= pago.getFechaPago() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= pago.getMetodoPago() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="5" class="py-2 px-4 text-center text-red-400">No se encontraron pagos.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                if (pagos != null && !pagos.isEmpty()) {
+                    for (Pago pago : pagos) {
+                        String fechaPagoFormateada = pago.getFechaPago() != null ? sdf.format(pago.getFechaPago()) : "";
+            %>
+            <tr class="hover:bg-gray-700">
+                <td class="py-2 px-4 border border-yellow-600"><%= pago.getIdCliente() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= pago.getMonto() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= fechaPagoFormateada %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= pago.getMetodoPago() %></td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+                <td colspan="5" class="py-2 px-4 text-center text-red-400">No se encontraron pagos.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-        <% if (pagos != null && !pagos.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de pagos: <%= pagos.size() %></div>
-        <% } %>
-    </main>
+    <% if (pagos != null && !pagos.isEmpty()) { %>
+        <div class="w-full p-4 text-white">Total de pagos: <%= pagos.size() %></div>
+    <% } %>
+</main>
+
 
 </body>
 </html>

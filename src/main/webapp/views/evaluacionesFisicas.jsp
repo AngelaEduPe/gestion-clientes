@@ -56,48 +56,50 @@
 
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE EVALUACIONES FISICAS</h1>
+    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE EVALUACIONES FISICAS</h1>
 
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-4 border border-yellow-600">ID Cliente</th>
-                    <th class="py-2 px-4 border border-yellow-600">Peso</th>
-                    <th class="py-2 px-4 border border-yellow-600">Altura</th>
-                    <th class="py-2 px-4 border border-yellow-600">Grasa Corporal</th>
-                    <th class="py-2 px-4 border border-yellow-600">Masa Muscular</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha Evaluación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    // Obtener las evaluaciones desde el request
-                    List<EvaluacionFisica> evaluaciones = (List<EvaluacionFisica>) request.getAttribute("evaluacionesFisicas");
+    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+        <thead class="bg-yellow-500">
+            <tr>
+                <th class="py-2 px-4 border border-yellow-600">ID Cliente</th>
+                <th class="py-2 px-4 border border-yellow-600">Peso</th>
+                <th class="py-2 px-4 border border-yellow-600">Altura</th>
+                <th class="py-2 px-4 border border-yellow-600">Grasa Corporal</th>
+                <th class="py-2 px-4 border border-yellow-600">Masa Muscular</th>
+                <th class="py-2 px-4 border border-yellow-600">Fecha Evaluación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+                List<EvaluacionFisica> evaluaciones = (List<EvaluacionFisica>) request.getAttribute("evaluacionesFisicas");
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-                    if (evaluaciones != null && !evaluaciones.isEmpty()) {
-                        for (EvaluacionFisica evaluacion : evaluaciones) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getIdCliente() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getPeso() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getAltura() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getGrasaCorporal() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getMasaMuscular() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getFechaEvaluacion() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="7" class="py-2 px-4 text-center text-red-400">No se encontraron evaluaciones.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                if (evaluaciones != null && !evaluaciones.isEmpty()) {
+                    for (EvaluacionFisica evaluacion : evaluaciones) {
+                        String fechaFormateada = evaluacion.getFechaEvaluacion() != null ? sdf.format(evaluacion.getFechaEvaluacion()) : "";
+            %>
+            <tr class="hover:bg-gray-700">
+                <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getIdCliente() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getPeso() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getAltura() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getGrasaCorporal() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= evaluacion.getMasaMuscular() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= fechaFormateada %></td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+                <td colspan="7" class="py-2 px-4 text-center text-red-400">No se encontraron evaluaciones.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-        <% if (evaluaciones != null && !evaluaciones.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de evaluaciones: <%= evaluaciones.size() %></div>
-        <% } %>
-    </main>
+    <% if (evaluaciones != null && !evaluaciones.isEmpty()) { %>
+        <div class="w-full p-4 text-white">Total de evaluaciones: <%= evaluaciones.size() %></div>
+    <% } %>
+</main>
+
 
 </body>
 </html>

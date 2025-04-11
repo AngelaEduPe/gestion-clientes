@@ -56,50 +56,53 @@
 
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE ENTRENADORES</h1>
+    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE ENTRENADORES</h1>
 
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-4 border border-yellow-600">ID Entrenador</th>
-                    <th class="py-2 px-4 border border-yellow-600">Nombres</th>
-                    <th class="py-2 px-4 border border-yellow-600">Apellido Paterno</th>
-                    <th class="py-2 px-4 border border-yellow-600">Apellido Materno</th>
-                    <th class="py-2 px-4 border border-yellow-600">Especialidad</th>
-                    <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
-                    <th class="py-2 px-4 border border-yellow-600">Email</th>
-                    <th class="py-2 px-4 border border-yellow-600">Fecha de Contratación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    List<Entrenador> entrenadores = (List<Entrenador>) request.getAttribute("entrenadores");
+    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+        <thead class="bg-yellow-500">
+            <tr>
+                <th class="py-2 px-4 border border-yellow-600">ID Entrenador</th>
+                <th class="py-2 px-4 border border-yellow-600">Nombres</th>
+                <th class="py-2 px-4 border border-yellow-600">Apellido Paterno</th>
+                <th class="py-2 px-4 border border-yellow-600">Apellido Materno</th>
+                <th class="py-2 px-4 border border-yellow-600">Especialidad</th>
+                <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
+                <th class="py-2 px-4 border border-yellow-600">Email</th>
+                <th class="py-2 px-4 border border-yellow-600">Fecha de Contratación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+                List<Entrenador> entrenadores = (List<Entrenador>) request.getAttribute("entrenadores");
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-                    if (entrenadores != null && !entrenadores.isEmpty()) {
-                        for (Entrenador entrenador : entrenadores) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getIdEntrenador() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getNombres() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getApellidoPaterno() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getApellidoMaterno() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getEspecialidad() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getTelefono() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getEmail() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getFechaContratacion() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="7" class="py-2 px-4 text-center text-red-400">No se encontraron entrenadores.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                if (entrenadores != null && !entrenadores.isEmpty()) {
+                    for (Entrenador entrenador : entrenadores) {
+                        String fechaFormateada = entrenador.getFechaContratacion() != null ? sdf.format(entrenador.getFechaContratacion()) : "";
+            %>
+            <tr class="hover:bg-gray-700">
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getIdEntrenador() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getNombres() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getApellidoPaterno() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getApellidoMaterno() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getEspecialidad() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getTelefono() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getEmail() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= fechaFormateada %></td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+                <td colspan="8" class="py-2 px-4 text-center text-red-400">No se encontraron entrenadores.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-        <% if (entrenadores != null && !entrenadores.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de entrenadores: <%= entrenadores.size() %></div>
-        <% } %>
-    </main>
+    <% if (entrenadores != null && !entrenadores.isEmpty()) { %>
+        <div class="w-full p-4 text-white">Total de entrenadores: <%= entrenadores.size() %></div>
+    <% } %>
+</main>
+
 </body>
 </html>
