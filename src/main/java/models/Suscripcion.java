@@ -4,19 +4,19 @@ import java.sql.Timestamp;
 
 public class Suscripcion {
 
-    private Integer idCliente;
+    private Integer idSuscripcion;
     private String tipo;
     private Float precio;
-    private Timestamp duracionMeses;
+    private Integer duracionMeses;
     private String beneficios;
 
     // Getters y Setters
-    public Integer getIdCliente() {
-        return idCliente;
+    public Integer getIdSuscripcion() {
+        return idSuscripcion;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setIdCliente(Integer idSuscripcion) {
+        this.idSuscripcion = idSuscripcion;
     }
 
     public String getTipo() {
@@ -35,11 +35,11 @@ public class Suscripcion {
         this.precio = precio;
     }
 
-    public Timestamp getDuracionMeses() {
+    public Integer getDuracionMeses() {
         return duracionMeses;
     }
 
-    public void setDuracionMeses(Timestamp duracionMeses) {
+    public void setDuracionMeses(Integer duracionMeses) {
         this.duracionMeses = duracionMeses;
     }
 

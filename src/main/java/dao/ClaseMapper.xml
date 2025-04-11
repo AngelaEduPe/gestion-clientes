@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="listarClases" resultMap="ClaseMap">
-        SELECT id_clase, nombre_clase, hora_inicio, hora_fin, id_entrenador
+        SELECT id_clase, nombre, fecha, hora, id_entrenador
         FROM clase
     </select>
 
