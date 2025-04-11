@@ -56,7 +56,7 @@
 
     <!-- Contenido principal -->
     <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE EVALUACIONEES FISICAS</h1>
+        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE EVALUACIONES FISICAS</h1>
 
         <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
             <thead class="bg-yellow-500">

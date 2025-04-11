@@ -10,10 +10,10 @@ import services.CategoriaProductoService;
 public class CategoriaProductoServiceImpl implements CategoriaProductoService {
 
     @Override
-    public List<CategoriaProducto> listarCategoriasProducto() {
+    public List<CategoriaProducto> listarCategoriasProductos() {
         try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
             CategoriaProductoMapper categoriaProductoMapper = session.getMapper(CategoriaProductoMapper.class);
-            return categoriaProductoMapper.listarCategoriasProducto();
+            return categoriaProductoMapper.listarCategoriasProductos();
         } catch (Exception e) {
             System.out.println("Error al listar categorías de productos: " + e);
             return null;
