@@ -12,7 +12,7 @@
 
    <header class="flex flex-col bg-black w-[250px] h-screen p-4 fixed top-0 left-0">
     <div class="logo-container p-2 mb-2">
-        <img src="https://cdn.pixabay.com/photo/2025/04/08/05/54/05-54-53-172_1280.png" alt="Logo" class="w-50 mx-auto"> 
+        <img src="https://i.postimg.cc/vTjLxPDs/Logo-Anyra-Powe-Fit.png" alt="Logo" class="w-50 mx-auto"> 
     </div>
     <div class="sidebar flex flex-col bg-black flex-grow">
         <a href="/gestion-clientes" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center 
