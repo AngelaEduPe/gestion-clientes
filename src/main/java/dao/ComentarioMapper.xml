@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="listarComentarios" resultMap="ComentarioMap">
-        SELECT id_comentario, id_cliente, comentario, fecha_comentario
+        SELECT id_comentario, id_cliente, comentario, fecha
         FROM comentario
     </select>
 

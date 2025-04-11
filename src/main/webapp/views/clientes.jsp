@@ -61,8 +61,9 @@
         <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
             <thead class="bg-yellow-500">
                 <tr>
-                    <th class="py-2 px-4 border border-yellow-600">Nombre</th>
-                    <th class="py-2 px-4 border border-yellow-600">Apellido</th>
+                    <th class="py-2 px-4 border border-yellow-600">Nombres</th>
+                    <th class="py-2 px-4 border border-yellow-600">Apellido Materno</th>
+                    <th class="py-2 px-4 border border-yellow-600">Apellido Paterno</th>
                     <th class="py-2 px-4 border border-yellow-600">Fecha de Nacimiento</th>
                     <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
                     <th class="py-2 px-4 border border-yellow-600">Email</th>
@@ -79,8 +80,9 @@
                         for (Cliente cliente : clientes) {
                 %>
                 <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getNombre() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellido() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getNombres() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoPaterno() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoMaterno() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= cliente.getFechaNacimiento() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= cliente.getTelefono() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= cliente.getEmail() %></td>

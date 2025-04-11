@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.VentaDetalleMapper">
+
+    <!-- Mapear VentaDetalle -->
+    <resultMap id="VentaDetalleMap" type="models.VentaDetalle">
+        <id column="id_venta_detalle" property="idVentaDetalle" />
+        <result column="id_venta" property="idVenta" />
+        <result column="tipo_item" property="tipoItem" />
+        <result column="id_producto" property="idProducto" />
+        <result column="id_clase" property="idClase" />
+        <result column="id_suscripcion" property="idSuscripcion" />
+        <result column="precio_unitario" property="precioUnitario" />
+        <result column="cantidad" property="cantidad" />
+        <result column="fecha_creacion" property="fechaCreacion" />
+    </resultMap>
+
+    <!-- Insertar un detalle de venta -->
+    <insert id="insertarVentaDetalle" parameterType="models.VentaDetalle">
+        INSERT INTO venta_detalle (
+            id_venta, tipo_item, id_producto, id_clase, id_suscripcion, precio_unitario, cantidad
+        ) VALUES (
+            #{idVenta}, #{tipoItem}, #{idProducto}, #{idClase}, #{idSuscripcion}, #{precioUnitario}, #{cantidad}
+        )
+    </insert>
+
+    <!-- Listar los detalles de una venta -->
+    <select id="listarDetallesPorVenta" resultMap="VentaDetalleMap" parameterType="int">
+        SELECT * FROM venta_detalle WHERE id_venta = #{idVenta}
+    </select>
+    
+    <insert id="insertarVentaProducto">
+	    INSERT INTO venta_producto (id_detalle, id_producto)
+	    VALUES (#{idDetalle}, #{idProducto})
+	</insert>
+	
+	<insert id="insertarVentaClase">
+	    INSERT INTO venta_clase (id_detalle, id_clase)
+	    VALUES (#{idDetalle}, #{idClase})
+	</insert>
+	
+	<insert id="insertarVentaSuscripcion">
+	    INSERT INTO venta_suscripcion (id_detalle, id_suscripcion)
+	    VALUES (#{idDetalle}, #{idSuscripcion})
+	</insert>
+    
+
+</mapper>

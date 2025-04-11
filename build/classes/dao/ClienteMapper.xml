@@ -7,8 +7,9 @@
 
     <resultMap id="ClienteMap" type="models.Cliente">
         <id column="id_cliente" property="idCliente" />
-        <result column="nombre" property="nombre" />
-        <result column="apellido" property="apellido" />
+        <result column="nombres" property="nombres" />
+        <result column="apellido_paterno" property="apellidoPaterno" />
+        <result column="apellido_materno" property="apellidoMaterno" />
         <result column="fecha_nacimiento" property="fechaNacimiento" />
         <result column="telefono" property="telefono" />
         <result column="email" property="email" />
@@ -18,8 +19,10 @@
 
     <!-- Listado de clientes -->
     <select id="listarClientes" resultMap="ClienteMap">
-        SELECT id_cliente, nombre, apellido, fecha_nacimiento, telefono, email, fecha_registro, id_suscripcion
+        SELECT id_cliente, nombres, apellido_paterno, apellido_materno, fecha_nacimiento, telefono, email, fecha_registro, id_suscripcion
         FROM cliente
+        WHERE estado_auditoria = '1'
+
     </select>
 
 </mapper>

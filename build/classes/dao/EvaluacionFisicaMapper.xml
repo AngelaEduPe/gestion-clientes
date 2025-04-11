@@ -6,7 +6,7 @@
 <mapper namespace="dao.EvaluacionFisicaMapper">
     
     <resultMap id="EvaluacionFisicaMap" type="models.EvaluacionFisica">
-        <id column="id" property="idEvaluacion" />
+        <id column="id_evaluacion_fisica" property="idEvaluacion" />
         <result column="id_cliente" property="idCliente" />
         <result column="peso" property="peso" />
         <result column="altura" property="altura" />
@@ -16,7 +16,7 @@
     </resultMap>
 
     <select id="listarEvaluacionesFisicas" resultMap="EvaluacionFisicaMap">
-        SELECT id, id_cliente, peso, altura, grasa_corporal, masa_muscular, fecha_evaluacion
+        SELECT id_evaluacion_fisica, id_cliente, peso, altura, grasa_corporal, masa_muscular, fecha_evaluacion
         FROM evaluacion_fisica
     </select>
 

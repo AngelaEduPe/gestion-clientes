@@ -10,10 +10,11 @@
         <result column="id_cliente" property="idCliente" />
         <result column="monto" property="monto" />
         <result column="fecha_pago" property="fechaPago" />
+        <result column="metodo_pago" property="metodoPago" />
     </resultMap>
 
     <select id="listarPagos" resultMap="PagoMap">
-        SELECT id_pago, id_cliente, monto, fecha_pago
+        SELECT id_pago, id_cliente, monto, fecha_pago, metodo_pago
         FROM pago
     </select>
 

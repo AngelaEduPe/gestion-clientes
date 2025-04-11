@@ -5,7 +5,9 @@ import java.sql.Timestamp;
 public class Entrenador {
 
     private Integer idEntrenador;
-    private String nombre;
+    private String nombres;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
     private String especialidad;
     private String telefono;
     private String email;
@@ -20,12 +22,28 @@ public class Entrenador {
         this.idEntrenador = idEntrenador;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombres() { 
+        return nombres;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombres(String nombres) { 
+        this.nombres = nombres;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
     }
 
     public String getEspecialidad() {
@@ -60,3 +78,4 @@ public class Entrenador {
         this.fechaContratacion = fechaContratacion;
     }
 }
+

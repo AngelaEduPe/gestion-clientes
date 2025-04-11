@@ -7,7 +7,10 @@
     
     <resultMap id="EntrenadorMap" type="models.Entrenador">
         <id column="id_entrenador" property="idEntrenador" />
-        <result column="nombre" property="nombre" />
+        <result column="nombres" property="nombres" /> 
+        <result column="apellido_paterno" property="apellidoPaterno" />
+        <result column="apellido_materno" property="apellidoMaterno" />
+        <result column="especialidad" property="especialidad" />
         <result column="telefono" property="telefono" />
         <result column="email" property="email" />
         <result column="especialidad" property="especialidad" />
@@ -15,7 +18,7 @@
     </resultMap>
 
     <select id="listarEntrenadores" resultMap="EntrenadorMap">
-        SELECT id_entrenador, nombre, telefono, email, especialidad
+        SELECT id_entrenador, nombres, apellido_paterno, apellido_materno, especialidad, telefono, email, fecha_contratacion
         FROM entrenador
     </select>
 

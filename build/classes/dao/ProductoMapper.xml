@@ -15,6 +15,7 @@
     <select id="listarProductos" resultMap="ProductoMap">
         SELECT id_producto, nombre, precio, id_categoria
         FROM producto
+        WHERE stock > 0
     </select>
 
 </mapper>

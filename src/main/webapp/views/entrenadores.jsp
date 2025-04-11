@@ -62,7 +62,9 @@
             <thead class="bg-yellow-500">
                 <tr>
                     <th class="py-2 px-4 border border-yellow-600">ID Entrenador</th>
-                    <th class="py-2 px-4 border border-yellow-600">Nombre</th>
+                    <th class="py-2 px-4 border border-yellow-600">Nombres</th>
+                    <th class="py-2 px-4 border border-yellow-600">Apellido Paterno</th>
+                    <th class="py-2 px-4 border border-yellow-600">Apellido Materno</th>
                     <th class="py-2 px-4 border border-yellow-600">Especialidad</th>
                     <th class="py-2 px-4 border border-yellow-600">Teléfono</th>
                     <th class="py-2 px-4 border border-yellow-600">Email</th>
@@ -78,7 +80,9 @@
                 %>
                 <tr class="hover:bg-gray-700">
                     <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getIdEntrenador() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getNombre() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getNombres() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getApellidoPaterno() %></td>
+                    <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getApellidoMaterno() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getEspecialidad() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getTelefono() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= entrenador.getEmail() %></td>

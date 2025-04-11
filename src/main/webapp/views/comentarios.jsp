@@ -61,6 +61,7 @@
         <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
             <thead class="bg-yellow-500">
                 <tr>
+                    <th class="py-2 px-4 border border-yellow-600">ID Cliente</th>
                     <th class="py-2 px-4 border border-yellow-600">Comentario</th>
                     <th class="py-2 px-4 border border-yellow-600">Fecha</th>
                 </tr>
@@ -74,6 +75,7 @@
                         for (Comentario comentario : comentarios) {
                 %>
                 <tr class="hover:bg-gray-700">
+                    <td class="py-2 px-4 border border-yellow-600"><%= comentario.getIdCliente() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= comentario.getComentario() %></td>
                     <td class="py-2 px-4 border border-yellow-600"><%= comentario.getFecha() %></td>
                 </tr>

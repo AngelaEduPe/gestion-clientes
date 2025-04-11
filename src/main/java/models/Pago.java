@@ -10,7 +10,6 @@ public class Pago {
     private Timestamp fechaPago;
     private String metodoPago;
 
-    // Getters y Setters
     public Integer getIdPago() {
         return idPago;
     }

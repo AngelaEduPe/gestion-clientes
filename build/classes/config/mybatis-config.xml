@@ -13,7 +13,7 @@
 				<property name="url"
 					value="jdbc:postgresql://localhost/ANYRA_POWERFIT" />
 				<property name="username" value="postgres" />
-				<property name="password" value="Jiwon6969@" />
+				<property name="password" value="admin" />
 			</dataSource>
 		</environment>
 	</environments>
@@ -24,11 +24,14 @@
     <mapper resource="dao/ClienteMapper.xml"/>
     <mapper resource="dao/ProductoMapper.xml"/>
     <mapper resource="dao/VentaProductoMapper.xml"/>
+    <mapper resource="dao/VentaMapper.xml"/>
+    <mapper resource="dao/VentaDetalleMapper.xml"/>
     <mapper resource="dao/PagoMapper.xml"/>
     <mapper resource="dao/EvaluacionFisicaMapper.xml"/>
     <mapper resource="dao/SuscripcionMapper.xml"/>
     <mapper resource="dao/EntrenadorMapper.xml"/>
     <mapper resource="dao/ClaseMapper.xml"/>
+    <mapper resource="dao/ComentarioMapper.xml"/>
 </mappers>
 
 
