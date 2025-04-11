@@ -54,32 +54,34 @@
     </div>
 </header>
 
-			<main class="p-4">
-				<div class="flex w-full justify-center p-4 gap-4 flex-wrap">
-					<% 
-						List<CategoriaProducto> categorias = 
-							(List<CategoriaProducto>) request.getAttribute("categoriasProductos");
-			
-						if (categorias != null && !categorias.isEmpty()) { 
-							for(CategoriaProducto categoria: categorias) { 
-					%>
-						<a href="/galactus-store/subcategorias?idCategoria=<%= categoria.getIdCategoria() %>" class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
-							<img class="rounded-sm" src="<%= categoria.getImagenUrl() %>" width="150px">
-							<span class="text-center font-bold text-gray-600"><%= categoria.getNombreCategoria() %></span>
-						</a>
-					<% 
-							} 
-						} else { 
-					%>
-						<p>No se encontraron registros</p>
-					<% } %>
-				</div>
+				<main class="p-4">
+				    <div class="flex w-full justify-center p-4 gap-4 flex-wrap">
+				        <% 
+				            // Obtener las categorías de productos desde el request
+				            List<CategoriaProducto> categoriasProductos = 
+				                (List<CategoriaProducto>) request.getAttribute("categoriasProductos");
 				
-				<% if (categorias != null && !categorias.isEmpty()) { %>
-					<div class="w-full p-4">Total registros: <%= categorias.size() %></div>
-				<% } %>
-			</main>
-
+				            // Comprobar si la lista de categorías no está vacía
+				            if (categoriasProductos != null && !categoriasProductos.isEmpty()) { 
+				                for(CategoriaProducto categoria : categoriasProductos) { 
+				        %>
+				            <a href="/gestion-clientes/subcategorias?idCategoriaProducto=<%= categoria.getIdCategoria() %>" 
+				               class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
+				                <img class="rounded-sm" src="<%= categoria.getImagenUrl() %>" width="150px">
+				                <span class="text-center font-bold text-gray-600"><%= categoria.getNombreCategoria() %></span>
+				            </a>
+				        <% 
+				                } 
+				            } else { 
+				        %>
+				            <p>No se encontraron registros</p>
+				        <% } %>
+				    </div>
+				    
+				    <% if (categoriasProductos != null && !categoriasProductos.isEmpty()) { %>
+				        <div class="w-full p-4">Total registros: <%= categoriasProductos.size() %></div>
+				    <% } %>
+				</main>
 
 
 </body>

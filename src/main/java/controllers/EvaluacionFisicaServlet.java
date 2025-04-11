@@ -17,7 +17,7 @@ import services.impl.EvaluacionFisicaServiceImpl;
 /**
  * Servlet implementation class EvaluacionFisicaServlet
  */
-@WebServlet("/evaluaciones-fisicas")
+@WebServlet("/evaluacionesFisicas")
 public class EvaluacionFisicaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

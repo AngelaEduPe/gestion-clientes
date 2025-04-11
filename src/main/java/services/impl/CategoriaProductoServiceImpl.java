@@ -15,7 +15,7 @@ public class CategoriaProductoServiceImpl implements CategoriaProductoService {
             CategoriaProductoMapper categoriaProductoMapper = session.getMapper(CategoriaProductoMapper.class);
             return categoriaProductoMapper.listarCategoriasProductos();
         } catch (Exception e) {
-            System.out.println("Error al listar categorías de productos: " + e);
+            System.out.println("Error en mostrar categorías de productos: " + e);
             return null;
         }
     }

@@ -72,7 +72,7 @@
             <tbody>
                 <% 
                     // Obtener las evaluaciones desde el request
-                    List<EvaluacionFisica> evaluaciones = (List<EvaluacionFisica>) request.getAttribute("evaluaciones");
+                    List<EvaluacionFisica> evaluaciones = (List<EvaluacionFisica>) request.getAttribute("evaluacionesFisicas");
 
                     if (evaluaciones != null && !evaluaciones.isEmpty()) {
                         for (EvaluacionFisica evaluacion : evaluaciones) {
