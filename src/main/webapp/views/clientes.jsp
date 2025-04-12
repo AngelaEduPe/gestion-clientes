@@ -8,7 +8,7 @@
     <title>ANYRA POWERFIT</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black text-white">
 
    <header class="flex flex-col bg-black w-[250px] h-screen p-4 fixed top-0 left-0">
     <div class="logo-container p-2 mb-2">
@@ -63,14 +63,11 @@
     </div>
 </header>
 
+<!-- Contenido principal -->
+		<main class="ml-[260px] p-6 bg-[#1e1e1e] min-h-screen text-white">
+    <h1 class="text-yellow-400 font-bold text-2xl text-center mb-6 tracking-wide uppercase">Lista de Clientes</h1>
 
-
-
-    <!-- Contenido principal -->
-    <main class="ml-[260px] p-4">
-    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE CLIENTES</h1>
-
-    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+    <table class="min-w-full bg-[#151515] text-white rounded-lg overflow-hidden">
         <thead class="bg-yellow-500">
             <tr>
                 <th class="py-2 px-4 border border-yellow-600">Nombres</th>
@@ -84,7 +81,7 @@
             </tr>
         </thead>
         <tbody>
-            <%
+            <% 
                 List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
@@ -93,7 +90,7 @@
                         String fechaNacFormateada = cliente.getFechaNacimiento() != null ? sdf.format(cliente.getFechaNacimiento()) : "";
                         String fechaRegFormateada = cliente.getFechaRegistro() != null ? sdf.format(cliente.getFechaRegistro()) : "";
             %>
-            <tr class="hover:bg-gray-700">
+            <tr class="hover:bg-gray-800 transition-colors">
                 <td class="py-2 px-4 border border-yellow-600"><%= cliente.getNombres() %></td>
                 <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoPaterno() %></td>
                 <td class="py-2 px-4 border border-yellow-600"><%= cliente.getApellidoMaterno() %></td>
@@ -106,14 +103,14 @@
             <% } %>
             <% } else { %>
             <tr>
-                <td colspan="8" class="py-2 px-4 text-center text-red-400">No se encontraron clientes.</td>
+                <td colspan="8" class="py-4 px-4 text-center text-red-400">No se encontraron clientes.</td>
             </tr>
             <% } %>
         </tbody>
     </table>
 
     <% if (clientes != null && !clientes.isEmpty()) { %>
-        <div class="w-full p-4 text-white">Total de clientes: <%= clientes.size() %></div>
+        <div class="w-full p-4 text-gray-300 mt-2">Total de clientes: <%= clientes.size() %></div>
     <% } %>
 </main>
 

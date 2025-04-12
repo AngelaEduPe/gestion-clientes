@@ -68,43 +68,44 @@
 
 
     <!-- Contenido principal -->
-    <main class="ml-[260px] p-4">
-        <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE SUSCRIPCIONES</h1>
+    <main class="ml-[260px] p-4 bg-[#1f1f1f] min-h-screen">
+    <h1 class="text-yellow-400 font-bold text-2xl text-center mb-4">LISTA DE SUSCRIPCIONES</h1>
 
-        <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
-            <thead class="bg-yellow-500">
-                <tr>
-                    <th class="py-2 px-4 border border-yellow-600">Tipo</th>
-                    <th class="py-2 px-4 border border-yellow-600">Precio</th>
-                    <th class="py-2 px-4 border border-yellow-600">Duración (Meses)</th>
-                    <th class="py-2 px-4 border border-yellow-600">Beneficios</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    List<Suscripcion> suscripciones = (List<Suscripcion>) request.getAttribute("suscripciones");
+    <table class="min-w-full bg-[#151515] text-white rounded-lg overflow-hidden">
+        <thead class="bg-yellow-500">
+            <tr>
+                <th class="py-2 px-4 border border-yellow-600">Tipo</th>
+                <th class="py-2 px-4 border border-yellow-600">Precio</th>
+                <th class="py-2 px-4 border border-yellow-600">Duración (Meses)</th>
+                <th class="py-2 px-4 border border-yellow-600">Beneficios</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+                List<Suscripcion> suscripciones = (List<Suscripcion>) request.getAttribute("suscripciones");
 
-                    if (suscripciones != null && !suscripciones.isEmpty()) {
-                        for (Suscripcion suscripcion : suscripciones) {
-                %>
-                <tr class="hover:bg-gray-700">
-                    <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getTipo() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getPrecio() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getDuracionMeses() %></td>
-                    <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getBeneficios() %></td>
-                </tr>
-                <% } %>
-                <% } else { %>
-                <tr>
-                    <td colspan="5" class="py-2 px-4 text-center text-red-400">No se encontraron suscripciones.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                if (suscripciones != null && !suscripciones.isEmpty()) {
+                    for (Suscripcion suscripcion : suscripciones) {
+            %>
+            <tr class="hover:bg-gray-700">
+                <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getTipo() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getPrecio() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getDuracionMeses() %></td>
+                <td class="py-2 px-4 border border-yellow-600"><%= suscripcion.getBeneficios() %></td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+                <td colspan="4" class="py-2 px-4 text-center text-red-400">No se encontraron suscripciones.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
-        <% if (suscripciones != null && !suscripciones.isEmpty()) { %>
-            <div class="w-full p-4 text-white">Total de suscripciones: <%= suscripciones.size() %></div>
-        <% } %>
-    </main>
+    <% if (suscripciones != null && !suscripciones.isEmpty()) { %>
+        <div class="w-full p-4 text-white">Total de suscripciones: <%= suscripciones.size() %></div>
+    <% } %>
+</main>
+
 </body>
 </html>

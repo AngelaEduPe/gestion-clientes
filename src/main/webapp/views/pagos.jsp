@@ -67,10 +67,10 @@
 
 
     <!-- Contenido principal -->
-    <main class="ml-[260px] p-4">
-    <h1 class="text-gray-600 font-bold text-2xl text-center mb-4">LISTA DE PAGOS</h1>
+    <main class="ml-[260px] p-4 bg-[#1f1f1f] min-h-screen">
+    <h1 class="text-yellow-400 font-bold text-2xl text-center mb-4">LISTA DE PAGOS</h1>
 
-    <table class="min-w-full bg-gray-900 text-white rounded-lg overflow-hidden">
+    <table class="min-w-full bg-[#151515] text-white rounded-lg overflow-hidden">
         <thead class="bg-yellow-500">
             <tr>
                 <th class="py-2 px-3 border border-yellow-600">ID Cliente</th>
@@ -107,6 +107,7 @@
         <div class="w-full p-4 text-white">Total de pagos: <%= pagos.size() %></div>
     <% } %>
 </main>
+
 
 
 </body>
