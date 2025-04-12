@@ -20,5 +20,4 @@ El sistema ofrece funcionalidades clave como:
 Este sistema busca ofrecer una herramienta integral que facilite la operación diaria de Anyra PowerFit y potencie la experiencia de sus clientes.
 
 ## Modelo de Base de Datos:
-![Diagrama](https://github.com/user-attachments/assets/e4252fc6-621d-40a1-a6f4-76d7989b8341)
-
+![ANYRA-POWERFIT_DIAGRAM](https://github.com/user-attachments/assets/85e200a9-3faa-400e-bae1-00c7f2ac0a1e)
