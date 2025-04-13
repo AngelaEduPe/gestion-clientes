@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ page import="java.util.List"%>
 <%@ page import="models.Cliente"%>
+<%@ page import="models.Producto" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,9 +68,9 @@
     <main class="p-4 ml-[250px]">
     <div class="flex w-full justify-center p-4 gap-4 flex-wrap">
         <% 
-            List<Producto> productos = (List<Producto>) request.getAttribute("productos");
-            if (productos != null && !productos.isEmpty()) {
-                for (Producto prod : productos) {
+	        List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+	        if (productos != null && !productos.isEmpty()) {
+	            for (Producto prod : productos) {
         %>
             <div class="flex bg-gray-800 w-[200px] justify-center flex-col p-4 gap-2 items-center rounded-md border border-gray-600 border-solid hover:border-yellow-600 cursor-pointer">
                 <img class="rounded-sm" src="<%= prod.getImagenUrl() %>" width="150px">
@@ -88,5 +89,3 @@
 
 </body>
 </html>
-
->

@@ -1,5 +1,6 @@
 package services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import config.MyBatisUtil;
@@ -10,17 +11,33 @@ import services.VentaDetalleService;
 public class VentaDetalleServiceImpl implements VentaDetalleService {
 
     @Override
-    public void insertarVentaDetalle(VentaDetalle ventaDetalle) {
+    
+    public List<VentaDetalle> listarDetalles() {
+        try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VentaDetalleMapper ventaDetalleMapper = session.getMapper(VentaDetalleMapper.class);
+            List<VentaDetalle> detalles = ventaDetalleMapper.listarDetalles();
+            return detalles != null ? detalles : new ArrayList<>();  // Si es null, devolver una lista vacía
+        } catch (Exception e) {
+            System.out.println("Error al listar todos los detalles de venta: " + e);
+            return new ArrayList<>();  // Devuelve una lista vacía en caso de error
+        }
+    }
+
+    
+    
+    public VentaDetalle insertarVentaDetalle(VentaDetalle ventaDetalle) {
         try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VentaDetalleMapper ventaDetalleMapper = session.getMapper(VentaDetalleMapper.class);
             ventaDetalleMapper.insertarVentaDetalle(ventaDetalle);
             session.commit();
+            return ventaDetalle;
         } catch (Exception e) {
             System.out.println("Error al insertar detalle de venta: " + e);
+            return null;
         }
     }
 
-    @Override
+
     public List<VentaDetalle> listarDetallesPorVenta(int idVenta) {
         try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VentaDetalleMapper ventaDetalleMapper = session.getMapper(VentaDetalleMapper.class);
@@ -31,37 +48,28 @@ public class VentaDetalleServiceImpl implements VentaDetalleService {
         }
     }
     
-    @Override
-    public void insertarVentaProducto(int idDetalle, int idProducto) {
+        
+    public void aumentarCantidad(Integer idVentaDetalle) {
         try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VentaDetalleMapper mapper = session.getMapper(VentaDetalleMapper.class);
-            mapper.insertarVentaProducto(idDetalle, idProducto);
+            mapper.aumentarCantidad(idVentaDetalle);
             session.commit();
         } catch (Exception e) {
-            System.out.println("Error al insertar en venta_producto: " + e);
+            System.out.println("Error al aumentar cantidad: " + e);
+        }
+    }
+    
+    public VentaDetalle obtenerPorVentaYTipoYItem(Integer idVenta, String tipoItem, Integer idItem) {
+        try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            VentaDetalleMapper mapper = session.getMapper(VentaDetalleMapper.class);
+            return mapper.obtenerPorVentaYTipoYItem(idVenta, tipoItem, idItem);
+        } catch (Exception e) {
+            System.out.println("Error al obtener detalle por tipo e ítem: " + e);
+            return null;
         }
     }
 
-    @Override
-    public void insertarVentaClase(int idDetalle, int idClase) {
-        try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
-            VentaDetalleMapper mapper = session.getMapper(VentaDetalleMapper.class);
-            mapper.insertarVentaClase(idDetalle, idClase);
-            session.commit();
-        } catch (Exception e) {
-            System.out.println("Error al insertar en venta_clase: " + e);
-        }
-    }
-
-    @Override
-    public void insertarVentaSuscripcion(int idDetalle, int idSuscripcion) {
-        try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
-            VentaDetalleMapper mapper = session.getMapper(VentaDetalleMapper.class);
-            mapper.insertarVentaSuscripcion(idDetalle, idSuscripcion);
-            session.commit();
-        } catch (Exception e) {
-            System.out.println("Error al insertar en venta_suscripcion: " + e);
-        }
-    }
+    
+      
 
 }

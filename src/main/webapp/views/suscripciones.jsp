@@ -51,7 +51,7 @@
             <img src="https://previews.123rf.com/images/sabuhinovruzov/sabuhinovruzov1705/sabuhinovruzov170501651/78710089-icono-de-vector-de-d%C3%B3lar-dinero-ilustraci%C3%B3n-de-efectivo-blanco-y-negro-esquema-de-icono-de-banca.jpg" alt="Pagos" class="w-5 mr-2">
             Pagos
         </a>
-        <a href="/gestion-clientes/categoriasProductos" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center 
+        <a href="/gestion-clientes/venta" class="text-white hover:text-yellow-400 p-2 pl-4 flex items-center 
             <% if (request.getRequestURI().contains("/categoriasProductos")) { %>text-yellow-400<% } %>">
             <img src="https://img.icons8.com/ios7/600w/FFFFFF/product.png" alt="Venta de Productos" class="w-5 mr-2">
             Venta de Productos

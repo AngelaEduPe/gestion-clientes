@@ -10,13 +10,15 @@ import services.VentaService;
 public class VentaServiceImpl implements VentaService {
 
     @Override
-    public void registrarVenta(Venta venta) {
+    public Venta registrarVenta(Venta venta) {
         try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
             VentaMapper ventaMapper = session.getMapper(VentaMapper.class);
             ventaMapper.registrarVenta(venta);
             session.commit();
+            return venta;
         } catch (Exception e) {
             System.out.println("Error al registrar venta: " + e);
+            return null;
         }
     }
     

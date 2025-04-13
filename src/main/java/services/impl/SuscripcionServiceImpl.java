@@ -8,7 +8,7 @@ import models.Suscripcion;
 import services.SuscripcionService;
 
 public class SuscripcionServiceImpl implements SuscripcionService {
-
+	
     @Override
     public List<Suscripcion> listarSuscripciones() {
         try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
@@ -19,4 +19,12 @@ public class SuscripcionServiceImpl implements SuscripcionService {
             return null;
         }
     }
+    
+        public Suscripcion obtenerPorId(int id) {
+            try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
+                SuscripcionMapper suscripcionMapper = session.getMapper(SuscripcionMapper.class);
+                return suscripcionMapper.obtenerPorId(id);
+            }
+        }
+    
 }

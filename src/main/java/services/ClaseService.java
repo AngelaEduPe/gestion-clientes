@@ -5,4 +5,5 @@ import models.Clase;
 
 public interface ClaseService {
     List<Clase> listarClases();
+    Clase obtenerPorId(int id);
 }

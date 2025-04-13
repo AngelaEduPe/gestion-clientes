@@ -18,5 +18,10 @@
         SELECT id_clase, nombre, fecha, hora, id_entrenador, capacidad
         FROM clase
     </select>
+    
+    <select id="obtenerPorId" resultType="models.Clase">
+	    SELECT * FROM clase WHERE id_clase = #{id} AND estado_auditoria = 1
+	</select>
+    
 
 </mapper>

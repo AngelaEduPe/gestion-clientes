@@ -19,4 +19,11 @@ public class ProductoServiceImpl implements ProductoService {
             return null;
         }
     }
+    
+    public Producto obtenerPorId(int id) {
+        try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            ProductoMapper mapper = session.getMapper(ProductoMapper.class);
+            return mapper.obtenerPorId(id);
+        }
+    }
 }

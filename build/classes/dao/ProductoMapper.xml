@@ -13,9 +13,14 @@
     </resultMap>
 
     <select id="listarProductos" resultMap="ProductoMap">
-        SELECT id_producto, nombre, precio, id_categoria
+        SELECT id_producto, nombre, descripcion, precio, stock
         FROM producto
         WHERE stock > 0
     </select>
+    
+    <select id="obtenerPorId" resultType="models.Producto">
+	    SELECT * FROM producto WHERE id_producto = #{id} AND estado_auditoria = 1
+	</select>
+    
 
 </mapper>

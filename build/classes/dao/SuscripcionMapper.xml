@@ -17,5 +17,10 @@
         SELECT id_suscripcion, tipo, precio, duracion_meses, beneficios
         FROM suscripcion
     </select>
+    
+    <select id="obtenerPorId" resultType="models.Suscripcion">
+	    SELECT * FROM suscripcion WHERE id_suscripcion = #{id} AND estado_auditoria = 1
+	</select>
+    
 
 </mapper>

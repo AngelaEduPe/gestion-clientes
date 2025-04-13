@@ -8,6 +8,7 @@ import models.Clase;
 import services.ClaseService;
 
 public class ClaseServiceImpl implements ClaseService {
+	
 
     @Override
     public List<Clase> listarClases() {
@@ -17,6 +18,13 @@ public class ClaseServiceImpl implements ClaseService {
         } catch (Exception e) {
             System.out.println("Error al listar clases: " + e);
             return null;
+        }
+    }
+    
+    public Clase obtenerPorId(int id) {
+        try (SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession()) {
+            ClaseMapper mapper = session.getMapper(ClaseMapper.class);
+            return mapper.obtenerPorId(id);
         }
     }
 }

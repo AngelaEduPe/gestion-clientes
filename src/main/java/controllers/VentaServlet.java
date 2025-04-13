@@ -21,6 +21,7 @@ import services.impl.ProductoServiceImpl;
 import services.impl.SuscripcionServiceImpl;
 import services.impl.VentaDetalleServiceImpl;
 import services.impl.VentaServiceImpl;
+import shared.Util;
 
 @WebServlet("/venta")
 public class VentaServlet extends HttpServlet {
@@ -42,7 +43,7 @@ public class VentaServlet extends HttpServlet {
         suscripcionServiceImpl = new SuscripcionServiceImpl();
     }
 
-    // Muestra el formulario de venta con productos, clases, suscripciones, etc.
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Producto> productos = productoServiceImpl.listarProductos();
         List<Cliente> clientes = clienteServiceImpl.listarClientes();
@@ -58,47 +59,84 @@ public class VentaServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    // Procesa el registro de una venta y sus detalles desde el carrito
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        Integer idItem = Integer.parseInt(request.getParameter("idItem"));
+        String tipoItem = request.getParameter("tipoItem");
+        System.out.println("Se está agregando un elemento al carrito: idItem = " + idItem + ", tipoItem = " + tipoItem);
         
-        String sessionId = (String) session.getAttribute("sessionId"); 
+        
+        String sessionId = Util.getCookieValue(request.getCookies(), "JSESSIONID");
+        
+        
         Venta venta = ventaServiceImpl.obtenerVentaPorCodigoInterno(sessionId);
-
-        int idCliente = Integer.parseInt(request.getParameter("clienteId"));
-        String metodoPago = request.getParameter("metodoPago");
-        float montoTotal = Float.parseFloat(request.getParameter("montoTotal"));
-
+        
         if (venta == null) {
-            Venta nuevaVenta = new Venta();
-            nuevaVenta.setCodigoInterno(sessionId);
-            nuevaVenta.setIdCliente(idCliente);
-            nuevaVenta.setMetodoPago(metodoPago);
-            nuevaVenta.setMontoTotal(montoTotal);
-
-            ventaServiceImpl.registrarVenta(nuevaVenta);
-            venta = nuevaVenta;
-        } else {
-            venta.setIdCliente(idCliente);
-            venta.setMetodoPago(metodoPago);
-            venta.setMontoTotal(montoTotal);
-            // si luego deseas actualizar la venta en BD, puedes implementar actualizarVenta()
-        }
-
-
-        // 2. Registrar cada ítem del carrito
-        List<VentaDetalle> carrito = (List<VentaDetalle>) session.getAttribute("carrito");
-
-        if (carrito != null && !carrito.isEmpty()) {
-            for (VentaDetalle detalle : carrito) {
-                detalle.setIdVenta(venta.getIdVenta()); // Asociar el idVenta generado a cada detalle
-                ventaDetalleServiceImpl.insertarVentaDetalle(detalle); // Insertar en la BD
+            Venta newVenta = new Venta();
+            newVenta.setCodigoInterno(sessionId);
+            venta = ventaServiceImpl.registrarVenta(newVenta);
+            if (venta == null) {
+                response.getWriter().append("Error al registrar la venta");
+                return;
             }
-            session.removeAttribute("carrito"); // Vaciar el carrito después de la venta
         }
 
-        // 3. Redirigir a la página de confirmación
-        response.sendRedirect("venta_confirmada.jsp");
+        // Buscar el detalle de la venta para el item
+        System.out.println("Venta ID: " + venta.getIdVenta());
+        VentaDetalle ventaDetalle = ventaDetalleServiceImpl.obtenerPorVentaYTipoYItem(venta.getIdVenta(), tipoItem, idItem);
+        
+        if (ventaDetalle == null) {
+            VentaDetalle newVentaDetalle = new VentaDetalle();
+            newVentaDetalle.setIdVenta(venta.getIdVenta());
+            if ("producto".equals(tipoItem)) {
+                newVentaDetalle.setIdProducto(idItem);
+            } else if ("clase".equals(tipoItem)) {
+                newVentaDetalle.setIdClase(idItem);
+            } else if ("suscripcion".equals(tipoItem)) {
+                newVentaDetalle.setIdSuscripcion(idItem);
+            }
+            ventaDetalle = ventaDetalleServiceImpl.insertarVentaDetalle(newVentaDetalle);
+            if (ventaDetalle == null) {
+                response.getWriter().append("Error al agregar el detalle de venta");
+                return;
+            }
+        } else {
+            ventaDetalleServiceImpl.aumentarCantidad(ventaDetalle.getIdVentaDetalle());
+        }
+
+        // Limpiar la cookie anterior
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if ("carrito".equals(cookie.getName())) {
+                cookie.setValue("");  
+                cookie.setMaxAge(0);  
+                response.addCookie(cookie); 
+            }
+        }
+
+       
+        String carrito = Util.getCookieValue(cookies, "carrito");
+        if (carrito == null || carrito.isEmpty()) {
+            carrito = "";
+        }
+        
+        
+        if (tipoItem != null && !tipoItem.isEmpty() && idItem != null && idItem > 0) {
+            if (!carrito.isEmpty()) {
+                carrito += ","; 
+            }
+            carrito += tipoItem + ":" + idItem; 
+        }
+
+        // Actualizar la cookie "carrito"
+        Cookie carritoCookie = new Cookie("carrito", carrito);
+        carritoCookie.setMaxAge(60 * 60 * 24); 
+        carritoCookie.setPath("/");  
+        response.addCookie(carritoCookie);
+
+        response.getWriter().append("OK");
     }
+
+
 
 }

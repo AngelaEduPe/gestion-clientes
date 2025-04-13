@@ -23,7 +23,6 @@
 	<mappers>
     <mapper resource="dao/ClienteMapper.xml"/>
     <mapper resource="dao/ProductoMapper.xml"/>
-    <mapper resource="dao/VentaProductoMapper.xml"/>
     <mapper resource="dao/VentaMapper.xml"/>
     <mapper resource="dao/VentaDetalleMapper.xml"/>
     <mapper resource="dao/PagoMapper.xml"/>

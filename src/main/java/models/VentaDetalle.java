@@ -9,8 +9,11 @@ public class VentaDetalle {
     private Integer idProducto;
     private Integer idClase;
     private Integer idSuscripcion;
-    private Float precio;
+    private Float precioUnitario;
     private Integer cantidad;
+    private String nombreProducto; 
+    private String nombreClase;
+    private String nombreSuscripcion;
     private Date fechaCreacion;
 
     // Getters y Setters
@@ -56,11 +59,11 @@ public class VentaDetalle {
         this.idSuscripcion = idSuscripcion;
     }
 
-    public Float getPrecio() {
-        return precio;
+    public Float getPrecioUnitario() {
+        return precioUnitario;
     }
-    public void setPrecio(Float precio) {
-        this.precio = precio;
+    public void setPrecio(Float precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public Integer getCantidad() {
@@ -68,6 +71,27 @@ public class VentaDetalle {
     }
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+    
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getNombreClase() {
+        return nombreClase;
+    }
+    public void setNombreClase(String nombreClase) {
+        this.nombreClase = nombreClase;
+    }
+
+    public String getNombreSuscripcion() {
+        return nombreSuscripcion;
+    }
+    public void setNombreSuscripcion(String nombreSuscripcion) {
+        this.nombreSuscripcion = nombreSuscripcion;
     }
 
     public Date getFechaCreacion() {
